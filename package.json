@@ -1,0 +1,22 @@
+{
+  "name": "shopify-scripts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc && node -r dotenv/config dist/app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "mongoose": "^5.11.9"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.19",
+    "tslint": "^6.1.3"
+  }
+}
