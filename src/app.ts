@@ -12,6 +12,9 @@ async function executeQuery(query: () => any): Promise<IResult> {
   const queryRunner = new ScriptRunner(queryInput, null);
   const values: object = await queryRunner.run();
   db.disconnectDB();
+
+  console.log(values);
+
   return {
     result: values,
     shopName: queryRunner.shopName,
@@ -28,6 +31,9 @@ async function executeMutation(
   const mutationRunner = new ScriptRunner(null, buildMutation);
   const values: object = await mutationRunner.run();
   db.disconnectDB();
+
+  console.log(values);
+
   return {
     result: values,
   };
