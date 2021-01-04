@@ -1,9 +1,32 @@
 import { IMutation } from './IMutation';
 
-export default function deleteAllProducts(): IMutation {
+export default async function deleteAllProducts(
+  input: any
+): Promise<IMutation> {
+  const productIds: any = input.result.products.edges.map(
+    (edge) => edge.node.id
+  );
+
+  const query = `mutation productDelete($input: ProductDeleteInput!) {
+    productDelete(input: $input) {
+      deletedProductId
+      shop {
+        id
+      }
+      userErrors {
+        field
+        message
+      }
+    }
+  }`;
+
   const result: IMutation = {
-    query: 'TEST',
-    variables: [],
+    title: 'deleteAllProducts',
+    query: query,
+    shopName: input.shopName,
+    shopToken: input.shopToken,
+    delay: 100,
+    variables: productIds,
   };
 
   return result;

@@ -1,4 +1,8 @@
 export interface IMutation {
-  query: string;
+  title: string;
+  query: any;
+  shopName: string;
+  shopToken: string;
+  delay?: number;
   variables?: object;
 }
