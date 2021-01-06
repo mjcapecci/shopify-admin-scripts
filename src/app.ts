@@ -5,6 +5,7 @@ db.connectDB();
 
 // script defs
 import getAllProducts from './scripts/queries/getAllProducts';
+import getAllApps from './scripts/queries/getAllApps';
 import deleteAllProducts from './scripts/mutations/deleteAllProducts';
 
 async function executeQuery(query: () => any): Promise<IResult> {
@@ -43,5 +44,6 @@ async function executeMutation(
 const args = require('yargs').argv;
 
 if (args.script === 'getAllProducts') executeQuery(getAllProducts);
+if (args.script === 'getAllApps') executeQuery(getAllApps);
 if (args.script === 'deleteAllProducts')
   executeMutation(getAllProducts, deleteAllProducts);

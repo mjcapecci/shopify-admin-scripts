@@ -6,6 +6,7 @@
   "scripts": {
     "start": "tsc && node -r dotenv/config dist/app.js",
     "getAllProducts": "tsc && node -r dotenv/config dist/app.js --script=getAllProducts",
+    "getAllApps": "tsc && node -r dotenv/config dist/app.js --script=getAllApps",
     "deleteAllProducts": "tsc && node -r dotenv/config dist/app.js --script=deleteAllProducts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
