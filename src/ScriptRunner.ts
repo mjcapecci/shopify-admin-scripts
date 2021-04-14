@@ -60,6 +60,8 @@ export default class ScriptRunner {
         console.log(error);
       }
       // compound mutation query with variables
+
+      // TODO: Accommodate for delay value. This means implement a timeout.
     } else {
       const topRes = this.variables.map(async (variable) => {
         try {
