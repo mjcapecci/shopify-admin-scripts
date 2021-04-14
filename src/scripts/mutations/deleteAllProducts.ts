@@ -25,7 +25,7 @@ export default async function deleteAllProducts(
     query: query,
     shopName: input.shopName,
     shopToken: input.shopToken,
-    delay: 100,
+    delay: 150,
     variables: productIds,
   };
 

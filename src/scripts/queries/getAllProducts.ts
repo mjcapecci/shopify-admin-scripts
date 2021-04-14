@@ -4,27 +4,35 @@ const db = require('../../db/connect');
 export default async function getAllProducts(): Promise<IQuery> {
   const Shop: any = db.models.Shop;
 
-  const mongoQuery: any = Shop.findOne({
-    name: process.env.DEV_STORENAME,
-  });
-  const mongoResult: any = await mongoQuery.exec();
+  try {
+    const mongoQuery: any = await Shop.findOne({
+      shop_name: process.env.DEV_STORENAME,
+    });
 
-  const query: string = `query {
-      products(first: 250) {
-        edges {
-          node {
-            id
+    if (!mongoQuery.shop_name) {
+      throw new Error('No Shop Name/Token Could Be Found');
+    }
+
+    const query: string = `query {
+        products(first: 250) {
+          edges {
+            node {
+              id
+            }
           }
         }
-      }
-    }`;
+      }`;
 
-  const result: IQuery = {
-    title: 'getAllProducts',
-    query: query,
-    shopName: mongoResult.name,
-    shopToken: mongoResult.token,
-  };
+    const result: IQuery = {
+      title: 'getAllProducts',
+      query: query,
+      shopName: mongoQuery.shop_name,
+      shopToken: mongoQuery.shop_token,
+    };
 
-  return result;
+    return result;
+  } catch (error) {
+    console.log(error);
+    process.exit(0);
+  }
 }
